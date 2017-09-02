@@ -51,7 +51,7 @@ submit.onclick=function(){
     var nameInput=document.getElementById('name');
     var nameValue=nameInput.value;
     //Make the request
-    request.open('GET','http://anoopkumar21297.imad.hasura-app.io/submit-name?name='+nameInput,true);
+    request.open('GET','http://anoopkumar21297.imad.hasura-app.io/submit-name?name='+nameValue,true);
     request.send(null);
   //capture a list of name and render it as  a list
 
