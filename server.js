@@ -87,6 +87,15 @@ app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
 
+var names=[];
+app.get('/submit_name/:name',function(req,res){
+    var name= req.paramas.name;
+    names.push(name);
+    res.send(JSON.stringify(names));
+    
+    
+});
+
 app.get('/:articleName', function (req, res) {
     //articleName== the name in the address
     //articles[articleName]== content of the required article
