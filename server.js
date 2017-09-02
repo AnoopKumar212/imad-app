@@ -18,11 +18,11 @@ app.get('/article-one', function (req, res) {
 });
 
 app.get('/article-two', function (req, res) {
-  res.send("Article one is requested and srved here");
+  res.send("Article two is requested and served here");
 });
 
 app.get('/article-three', function (req, res) {
-  res.send("Article one is requested and srved here");
+  res.send("Article three is requested and srved here");
 });
 
 app.get('/ui/madi.png', function (req, res) {
