@@ -88,7 +88,7 @@ app.get('/ui/main.js', function (req, res) {
 });
 
 var names=[];
-app.get('/submit_name/:name',function(req,res){
+app.get('/submit-name/:name',function(req,res){
     var name= req.paramas.name;
     names.push(name);
     res.send(JSON.stringify(names));
