@@ -67,7 +67,7 @@ var htmlTemplate=`
      </body>
 </html>`;
 return htmlTemplate;
-    }
+}
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
@@ -80,7 +80,7 @@ app.get('/ui/style.css', function (req, res) {
 app.get('/:articleName', function (req, res) {
     //articleName== the name in the address
     //articles[articleName]== content of the required article
-    var articleName= req.params.artcileName
+    var articleName= req.params.articleName
   res.send(createTemplate(articles[articleName]));
 });
 
