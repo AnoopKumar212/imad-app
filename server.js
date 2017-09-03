@@ -69,7 +69,7 @@ var htmlTemplate=`
             <hr/>
             <h3>${heading}</h3>
             <div>
-                ${date}
+                ${date.toDateString()}
             </div>
             <div>
                ${content}
@@ -85,14 +85,25 @@ app.get('/', function (req, res) {
 });
 
 var pool = new Pool(config);
-app.get('/test-db', function (req, res) {
-    pool.query('Select * from test',function(err, result){
+app.get('/article/:articleName', function (req, res) {
+    
+    pool.query('Select * from article where title=$1',[req.paramas.articleName],function(err, result){
         if(err){
             res.status(500).send(err.toString());
         }
         else{
-            res.send(JSON.stringify(result.rows));
+            if(result.rows.length===0)
+            {
+                res.status(404).send("Article Not found");
+            }
+            else
+            {
+            var articleData= result.rows[0];
+            res.send(createTemplate(articles[articleData]));
+            }
+                
         }
+        
     });
   
 });
@@ -120,12 +131,7 @@ app.get('/submit-name',function(req,res){
     
 });
 
-app.get('/:articleName', function (req, res) {
-    //articleName== the name in the address
-    //articles[articleName]== content of the required article
-    var articleName= req.params.articleName
-  res.send(createTemplate(articles[articleName]));
-});
+
 
 
 app.get('/ui/madi.png', function (req, res) {
